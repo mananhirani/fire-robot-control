@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Safety Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fade-in animation for content */
+        .fade-in {
+            animation: fadeIn 1.2s ease-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Button hover animation */
+        .btn {
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Make the text more readable */
+        .highlight {
+            font-weight: bold;
+            color: #FF6347;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 fade-in">
+
+    <!-- Header -->
+    <header class="bg-red-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-3xl font-bold">Fire Safety Information</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-6 space-y-8">
+            <!-- Fire Safety Information Text -->
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Fire Safety Guidelines</h2>
+                <p class="text-lg text-gray-700">
+                    Fire emergencies can escalate quickly, and understanding the appropriate steps can be the difference between safety and disaster. 
+                    If a fire is detected, prioritize your personal safety and the safety of others. Begin by sounding the alarm and notifying emergency services.
+                </p>
+                <p class="text-lg text-gray-700 mt-4">
+                    If you're in a monitored facility equipped with a fire robot, assess whether it's safe to deploy it to investigate or suppress the fire source. Avoid taking unnecessary risks. If conditions worsen or visibility decreases due to smoke, evacuate immediately using marked exits. 
+                </p>
+                <p class="text-lg text-gray-700 mt-4">
+                    Never attempt to retrieve belongings or re-enter the building. Designated evacuation plans should be followed, and all staff should be trained to assist individuals with special needs. Once safely outside, remain at the designated assembly point and wait for updates from emergency responders.
+                </p>
+                <p class="text-lg text-gray-700 mt-4">
+                    Fire preparedness is a shared responsibility — ensure fire extinguishers, sensors, and systems are regularly inspected and that all personnel are aware of emergency protocols.
+                </p>
+            </section>
+
+            <!-- Steps to Take Section -->
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Steps to Take During a Fire</h2>
+                <ol class="list-decimal list-inside space-y-4 text-lg text-gray-700">
+                    <li><span class="highlight">Sound the Alarm:</span> Alert everyone in the area and activate the nearest fire alarm.</li>
+                    <li><span class="highlight">Call Emergency Services:</span> Dial the local emergency number (e.g., 101) to report the fire.</li>
+                    <li><span class="highlight">Use the Fire Robot:</span> Deploy the robot to assess and handle the fire if conditions are safe.</li>
+                    <li><span class="highlight">Evacuate Immediately:</span> Use the nearest safe exit; do not use elevators during a fire.</li>
+                    <li><span class="highlight">Assist Others:</span> Help anyone who may need assistance evacuating, including those with mobility challenges.</li>
+                    <li><span class="highlight">Do Not Re-enter:</span> Never go back inside a burning building until it is declared safe by authorities.</li>
+                </ol>
+            </section>
+
+            <!-- Safety Tips -->
+            <section class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 rounded">
+                <h3 class="text-xl font-semibold mb-2">Fire Safety Tips</h3>
+                <p>
+                    ⚠️ <strong>Tip:</strong> Always have an evacuation plan and ensure fire extinguishers and sensors are regularly maintained.
+                </p>
+            </section>
+
+            <!-- Back Button -->
+            <div class="mt-8 text-center">
+                <a href="index.html" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded btn">
+                    Back to Control Interface
+                </a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Robot Control Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Button hover and transition animations */
+        .btn {
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add a smooth fade-in effect for the page */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* Customized button styles for the Fire Safety button */
+        .btn-fire-safety {
+            background-color: #ffcc00;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-fire-safety:hover {
+            background-color: #ff9900;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Customized button styles for the Camera Feed button */
+        .btn-camera-feed {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-camera-feed:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 fade-in">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-red-600 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <h1 class="text-2xl font-bold">Fire Robot Control Interface</h1>
+                <p class="text-sm">Status: <span id="connection-status" class="font-semibold">Disconnected</span></p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Fire Situation Monitor -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4">Fire Situation Monitor</h2>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-600">Temperature</p>
+                                <p id="temperature" class="text-2xl font-bold">--°C</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-600">Smoke Level</p>
+                                <p id="smoke-level" class="text-2xl font-bold">--%</p>
+                            </div>
+                        </div>
+                        <div class="h-64">
+                            <canvas id="sensorChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robot Control -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4">Robot Control</h2>
+                    <div class="space-y-4">
+                        <!-- Movement Controls -->
+                        <div class="grid grid-cols-3 gap-2 max-w-xs mx-auto">
+                            <div></div>
+                            <button class="bg-gray-200 hover:bg-gray-300 p-4 rounded btn" onclick="moveRobot('forward')">↑</button>
+                            <div></div>
+
+                            <button class="bg-gray-200 hover:bg-gray-300 p-4 rounded btn" onclick="moveRobot('left')">←</button>
+                            <button class="bg-gray-200 hover:bg-gray-300 p-4 rounded btn" onclick="moveRobot('stop')">■</button>
+                            <button class="bg-gray-200 hover:bg-gray-300 p-4 rounded btn" onclick="moveRobot('right')">→</button>
+
+                            <div></div>
+                            <button class="bg-gray-200 hover:bg-gray-300 p-4 rounded btn" onclick="moveRobot('backward')">↓</button>
+                            <div></div>
+                        </div>
+
+                        <!-- Water Control -->
+                        <div class="border-t pt-4">
+                            <h3 class="text-lg font-semibold mb-2">Water Control</h3>
+                            <div class="flex space-x-4">
+                                <button id="water-toggle" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded btn" onclick="toggleWater()">
+                                    Start Water
+                                </button>
+                                <div class="flex items-center">
+                                    <label class="mr-2">Pressure:</label>
+                                    <input type="range" id="water-pressure" min="0" max="100" value="50" class="w-32">
+                                    <span id="pressure-value" class="ml-2">50%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fire Safety Button -->
+                <div class="mt-6 text-center">
+                    <a href="fireindex.html" class="btn-fire-safety">
+                        Fire Safety Information
+                    </a>
+                </div>
+
+                <!-- Camera Feed Button -->
+                <div class="mt-6 text-center">
+                    <a href="camera.html" class="btn-camera-feed">
+                        Camera Feed
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
